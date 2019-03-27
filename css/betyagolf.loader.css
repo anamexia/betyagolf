@@ -1,0 +1,22 @@
+.mainLoader{
+  position:fixed;
+  z-index: 1004;
+  background-color: rgba(0, 0, 0, 0.57);
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow: hidden;
+}
+
+.mainView{
+  /*display: none;*/
+  position:fixed;
+  z-index: 1004;
+  background:transparent url(resources/fondo.jpg) fixed;
+    background-size: 320px;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}

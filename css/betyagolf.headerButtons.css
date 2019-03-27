@@ -1,0 +1,79 @@
+.bNext{
+    background-color: transparent !important;
+    background: url(resources/siguiente.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bCont{
+    background-color: transparent !important;
+    background: url(resources/continuar.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bBack {
+    background-color: transparent !important;
+    background:url(resources/regresar.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bCanc {
+    background-color: transparent !important;
+    background:url(resources/cancelar.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bEdit {
+    background-color: transparent !important;
+    background:url(resources/editar.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bCalc {
+    background-color: transparent !important;
+    background:url(resources/calcular.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bEnd {
+    background-color: transparent !important;
+    background:url(resources/finalizar.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}
+
+.bMenu {
+    background:url(resources/menu.png) no-repeat;
+    background-size: 100% 100%;
+    background-size: contain;
+    background-position: center;
+    width: 20%;
+    height: 45%;
+    border: none;
+}

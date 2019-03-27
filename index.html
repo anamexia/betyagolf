@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>BetyaGolf</title>
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://cdn.mxpnl.com https://*.facebook.com http://*.facebook.com https://*.fbcdn.net http://*.fbcdn.net *.facebook.net;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="css/thr/jquery.mobile.external-png-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile.inline-png-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile.inline-svg-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet">
+    <link href="css/thr/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+    <script src="js/thr/jquery-1.9.1.min.js"></script>
+    <script>
+    $(document).bind('mobileinit', function() {
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+    </script>
+    <script src="js/thr/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/thr/jqm-spinbox.min.js"></script>
+    <script src="js/thr/velocity.min.js"></script>
+    <script src="js/thr/jquery.visible.min.js"></script>
+    <script src="js/thr/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/thr/parse-1.6.7.min.js"></script>
+    <script src="js/thr/spin.min.js"></script>
+    <script src="js/thr/jquery.spin.js"></script>
+    <script src="js/thr/fastclick.js"></script>
+    <script src="js/thr/alertify.min.js"></script>
+    <script src="js/thr/vex.combined.min.js"></script>
+    <script src="js/thr/jquery.floatThead.min.js"></script>
+    <script src="js/thr/tether.min.js"></script>
+    <script src="js/thr/shepherd.min.js"></script>
+    <script src="js/thr/require.js"></script>
+    <script src="js/tutorial.js"></script>
+    <script src="js/inapp.js"></script>
+    <script src="js/parseSync.js"></script>
+    <script src="js/mixPanelSync.js"></script>
+    <script src="js/apuestasPareja.js"></script>
+    <script src="js/apuestasIndividuales.js"></script>
+    <script src="js/bancoApuestas.js"></script>
+    <script src="js/saldosApuestas.js"></script>
+    <script src="js/creacionEquipos.js"></script>
+    <script src="js/tarjeta.js"></script>
+    <script src="js/presiones.js"></script>
+    <script src="js/campos.js"></script>
+    <script src="js/panel.js"></script>
+    <script src="js/thr/jquery.fixedheadertable.js"></script>
+    <script src="js/betyagolf.js"></script>
+    <script src="phonegap.js"></script>
+    <link href="css/thr/defaultTheme.css" rel="stylesheet">
+    <link href="css/thr/socialButtons.css" rel="stylesheet">
+    <link href="css/betyagolf.structure.css" rel="stylesheet">
+    <link href="css/betyagolf.headerButtons.css" rel="stylesheet">
+    <link href="css/betyagolf.dialogs.css" rel="stylesheet">
+    <link href="css/betyagolf.loader.css" rel="stylesheet">
+    <link href="css/thr/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="css/thr/alertify.core.css" rel="stylesheet">
+    <link href="css/thr/alertify.default.css" rel="stylesheet">
+    <link href="css/thr/vex.css" rel="stylesheet">
+    <link href="css/vex-theme-plain.css" rel="stylesheet">
+    <link href="css/thr/shepherd-theme-arrows.css" rel="stylesheet">
+    <script>
+    vex.defaultOptions.className = 'vex-theme-plain';
+    </script>
+</head>
+<!-- class="hider" -->
+
+<body onload="onBodyLoad()">
+    <!-- PAGINA DE INICIO -->
+    <div class="mainView">
+        <div class="mainImage" style="position:absolute;text-align:center;left: calc(50% - 121px);bottom:calc(50% - 25px);" data-controltype="image">
+            <img style="max-height: 50px;" src="res/betyagolf.png">
+        </div>
+    </div>
+    <div data-role="page" data-control-title="Home" id="page1">
+        <div data-role="content" style="height:100%;padding:0">
+            <div style="height:50%; position:fixed;width:80%;top:0;left:10%;">
+                <img id="imgInc" style="max-height:100%;margin:auto;position:absolute;bottom:0;left:calc(50% - 68px)" src="res/jugador.png">
+            </div>
+            <div style="position:absolute;text-align:center;bottom:5%;width:100%">
+                <div class="comienzo" style="max-width:80%; width:340px;margin:auto;background:#DFE5E8;padding:5px;border-radius:5px">
+                    <form id="loginForm" class="center" onsubmit="betyaLogin()">
+                        <input id="parseUserName" type="text" placeholder="Username" required>
+                        <input id="parsePassWord" type="password" placeholder="Password" required>
+                    </form>
+                    <div class="center">
+                        <a data-role="button" style="background:#2AB573; color:white;" onClick="betyaLogin();">Login</a>
+                        <a data-role="button" id="facebook" onClick="loginFacebook();">Sign in with Facebook</a>
+                    </div>
+                </div>
+                <div class="ui-grid-a" style="max-width:80%; width:340px;margin:auto;">
+                    <div class="ui-block-a"><a data-role="button" class="BYGsimple" style="color:#ADADAD; font-size: small;" onClick="checkSignUp();">Sign Up</a></div>
+                    <div class="ui-block-b"><a data-role="button" class="BYGsimple" style="color:#ADADAD; font-size: small; white-space:normal; height:35px" onClick="checkTemporal();">
+                  Continuar sin cuenta
+                </a></div>
+                </div>
+                <div>
+                    <img style="height: 50px;" src="res/betyagolf.png">
+                </div>
+            </div>
+            <div id="dispVersion" style="bottom:0;position:fixed;color:#6E6E6E;">v1.0</div>
+            <div id="shopContainer" class="ui-nodisc-icon" style="top:0;right:0;position:fixed;"><a onClick="inAppShow()" style="background: #333; border-color:#1f1f1f" class="ui-btn ui-btn-b ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-inline">Shop</a></div>
+        </div>
+    </div>
+    <!-- <a id="openPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-alt-icon ui-nodisc-icon">Home</a> -->
+    <!-- PAGINA DE SELECCION DE CAMPO -->
+    <div data-role="page" data-control-title="Seleccion de Campo" id="page2">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+              </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte01.png" style="max-width: 70%;">
+            <p style="top:53px;font-size:small;z-index:1000;position:fixed;">Jugadores</p>
+        </div>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;">
+                SELECCIONE EL
+                <br><b>CAMPO</b>
+            </p>
+            <form>
+                <input data-type="search" id="campSearch">
+            </form>
+            <div data-role="collapsibleset" data-filter="true" data-inset="true" id="campList" data-input="#campSearch" class="ui-shadow" data-collapsed-icon="false">
+            </div>
+            <!-- <ul id="campList" data-role="listview" data-inset="true">
+            <li data-role="list-divider">Campos</li>
+            <div data-role="collapsible" data-iconpos="right" data-inset="true">
+              <h2>La Hacienda</h2>
+              <ul data-role="listview">
+                <li><a onClick="campoActivo(1);" href="#page5">Blancas</a></li>
+              </ul>
+            </div>
+          </ul> -->
+            <a data-role="button" class="BYGbutton addCampo" onClick="dlCampos();">AGREGAR MAS</a>
+            <!-- <a data-role="button" onClick="cargarCampos();" href="#page2">Comenzar</a> -->
+        </div>
+    </div>
+    <!-- PAGINA DE DESCARGA DE CAMPOS -->
+    <div data-role="page" data-control-title="Descarga de Campos" id="campos">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page2" class="ui-btn-left bBack" data-shadow="false"></a>
+            <h3>
+          <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div data-role="tabs" style="padding:0" class="tabs">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#loc" id="activeLoc" data-theme="a" data-ajax="false">Por GPS</a></li>
+                    <li><a href="#srName" id="activeSrName" data-theme="a" data-ajax="false">Por nombre</a></li>
+                    <li><a href="#customCamp" id="activeCustom" data-theme="a" data-ajax="false">Custom</a></li>
+                </ul>
+            </div>
+            <div id="loc" class="ui-content">
+                <div style="position:relative;height:100%;">
+                    <ul data-role="listview" data-inset="true" style="overflow:scroll;height:80%;position:relative"></ul>
+                </div>
+                <a id="locButton" nLink="6" onClick="loadByLoc(6)" data-role="button" class="BYGbutton" style="width:20% !important;float:right">Mas</a>
+                <p id="locText" class="hidden" style="font-weight:bold;font-size:large;text-align:center;">Fin de la Lista
+                    <p>
+            </div>
+            <div id="srName" class="ui-content">
+                <form class="ui-filterable">
+                    <input id="nameFilter" data-type="search" placeholder="Nombre del club">
+                </form>
+                <ul id="searchCamp" data-role="listview" data-inset="true" data-filter="true" data-input="#nameFilter"></ul>
+                <a id="namButton" nLink="6" onClick="loadByLoc(6)" data-role="button" class="BYGbutton" style="width:20% !important;float:right">Mas</a>
+                <p id="srNameText" class="hidden" style="font-weight:bold;font-size:large;text-align:center;">Fin de la Lista
+                    <p>
+            </div>
+            <div id="customCamp" class="ui-content">
+                <p class="center"><b>Campo Custom</b></p>
+                <div id="newCustomCamp" style="background-color: white;padding:10px">
+                    <div class="center">
+                        <input type="text" id="ccName" placeholder="Nombre del Campo" value="">
+                    </div>
+                    <div data-role="collapsibleset" data-collapsed-icon="false"></div>
+                    <br>
+                    <div data-role="controlgroup" data-type="horizontal" id="teeGroup" class="center">
+                        <input type="text" id="addTee" placeholder="Nuevo Tee" value="" data-wrapper-class="controlgroup-textinput ui-btn">
+                        <a data-role="button" style="width:25%" camperID="custom" fromPage="customCamp" onClick="addTee(this)">Agregar</a>
+                    </div>
+                    <br>
+                    <a data-role="button" id="addCustom" onClick="customCampo()" class="BYGbutton byg-disabled">AGREGAR CAMPO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PAGINA DE Editar DE CAMPOS -->
+    <div data-role="page" data-control-title="Editar Campo" id="edCamps">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page2" class="ui-btn-left bCanc" data-shadow="false"></a>
+            <a data-role="button" onClick="confirmUpdate()" class="ui-btn-right bCont" data-shadow="false"></a>
+            <h3>
+          <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;">
+                EDITAR EL <b>CAMPO</b></p>
+            <div id="editCampInfo" style="background-color: white;padding:10px">
+            </div>
+        </div>
+    </div>
+    <!-- PAGINA DE SELECCION DE JUGADORES -->
+    <div data-role="page" data-control-title="Seleccion de jugadores" id="page5">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page2" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="JugadoresActivos()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+          <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte01.png" style="max-width: 70%;">
+            <p style="top:53px;font-size:small;z-index:1000;position:fixed;">Jugadores</p>
+        </div>
+        <div class="header-gradient" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;">
+                HOY <b>JUEGAN</b>
+            </p>
+            <table id="lbUsers" data-role="table" data-mode="none">
+                <thead class="ui-body-b">
+                    <tr>
+                        <th>JUGADOR</th>
+                        <th>JUEGA HOY</th>
+                        <th>SE VA
+                            <br>TEMPRANO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="transparent" data-role="footer" data-position="fixed" data-tap-toggle="false" style="text-align:center; padding-top:5px;padding-bottom:5px;">
+            <!-- <a data-role="button" class="BYGbutton Users" onClick="bancoApuesta()">APUESTAS<br>INDIVIDUALES</a> -->
+            <a data-role="button" data-transition="slide" class="BYGbutton Users" href="#page3">NUEVO JUGADOR</a>
+        </div>
+    </div>
+    <!-- PAGINA DE INDICE DE JUGADORES -->
+    <div data-role="page" data-control-title="Indices de Jugadores" id="uIndice">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page14" class="ui-btn-left bBack" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte01.png" style="max-width: 70%;">
+            <p style="top:53px;font-size:small;z-index:1000;position:fixed;">Jugadores</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>INDICE</b> DE JUGADORES
+            </p>
+            <table id="lbIndice" data-role="table" data-mode="none">
+                <thead class="ui-body-b">
+                    <tr>
+                        <th>JUGADOR</th>
+                        <th>INDICE</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- PAGINA DE AJUSTES JUGADOR -->
+    <div data-role="page" data-control-title="Nuevo jugador" id="page3">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" data-transition="slide" data-direction="reverse" onClick="ClearFieldsNJ();editBack();" href="#page5" class="ui-btn-left bCanc" data-shadow="false"></a>
+            <a data-role="button" id="aJug" data-transition="slide" data-direction="reverse" onClick="AddValueToDB()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+             <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte01.png" style="max-width: 70%;">
+            <p style="top:53px;font-size:small;z-index:1000;position:fixed;">Jugadores</p>
+        </div>
+        <br>
+        <br>
+        <p style="text-align: center;font-size:large;color:#203744;">
+            <b>AJUSTES</b> JUGADOR
+        </p>
+        <div data-role="content">
+            <br>
+            <input id="txFirstName" type="text" placeholder="Nombre" data-clear-btn="true">
+            <input id="txLastName" type="text" placeholder="Apellido" data-clear-btn="true">
+            <input id="txHandicap" type="number" placeholder="Handicap" data-clear-btn="true">
+            <br>
+            <div style="text-align:center">
+                <span style="vertical-align:50%">Juega hoy</span>
+                <input id="edJuega" name="edJugaran" type="checkbox" data-role="none" class="BYGcheckbox">
+                <label for="edJuega"></label>
+            </div>
+            <div style="text-align:center;margin-right:11.5%;">
+                <span style="vertical-align:50%">Se va Temprano</span>
+                <input id="edEarly" name="edEarly" type="checkbox" data-role="none" class="BYGcheckbox">
+                <label for="edEarly"></label>
+            </div>
+            <br>
+            <a data-role="button" id="nJug" class="BYGbutton" onClick="AddValueToDB('nJug')">
+            OTRO JUGADOR
+        </a>
+            <br>
+            <a data-role="button" id="delJug" class="BYGbutton redbtn hidden">
+            BORRAR
+        </a>
+        </div>
+    </div>
+    <!-- PAGINA DE JUGADORES ACTIVOS -->
+    <div data-role="page" data-control-title="Activos" id="page14">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page5" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="confirmActivos()" class="ui-btn-right bCont" data-shadow="false"></a>
+            <h3>
+             <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte01.png" style="max-width: 70%;">
+            <p style="top:53px;font-size:small;z-index:1000;position:fixed;">Jugadores</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>HANDICAP</b> DE JUGADORES
+            </p>
+            <table id="dbActivos" data-role="table" data-mode="none" style="table-layout:fixed;">
+                <thead class="ui-body-b">
+                    <tr>
+                        <th>JUGADOR</th>
+                        <th style="width:15%">HANDICAP</th>
+                        <th>SALIDA</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="transparent" data-role="footer" data-position="fixed" data-tap-toggle="false" style="text-align:center; padding-top:5px;padding-bottom:5px;">
+            <a data-role="button" href="#uIndice" onClick="ListDBIndices()" class="BYGsimple" style="float:left;margin-left:15px;" data-shadow="false" name="acEdit">
+        Ver Indices
+        </a>
+            <!--  <a data-role="button" class="BYGbutton Edits" onclick="editActive()" style="float:right;" name="acEdit">
+        EDITAR
+        </a>
+        <a data-role="button" class="BYGbutton Editing hidden" onclick="cancelEditActive()" name="acEdited">
+        CANCELAR
+        </a>
+        <a data-role="button" class="BYGbutton Editing hidden" onclick="ChangeHandicap()" name="acEdited">
+        GUARDAR
+        </a> -->
+        </div>
+    </div>
+    <!-- PAGINA DE CREACION DE EQUIPOS -->
+    <div data-role="page" data-control-title="Crear Equipo" id="page7">
+        <div data-role="content">
+            <br>
+            <br>
+            <div style=" text-align:center" data-controltype="image">
+                <img src="res/icono_equipo.png" style="max-width: 100%; max-height:100px;" data-controltype="image">
+            </div>
+            <div data-controltype="textblock">
+                <p style="text-align: center;font-size:x-large;">
+                    ¿COMO QUIERES
+                    <br><b>CREAR TU EQUIPO?</b>
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="center">
+            <a data-role="button" class="BYGbutton" onClick="Temprano(1)">ALEATORIO</a>
+            <br>
+            <a data-role="button" class="BYGbutton" onClick="Temprano(2)">POR HANDICAP</a>
+            <br>
+            <a data-role="button" class="BYGbutton" onClick="Temprano(3)">MANUAL</a>
+            <br>
+            <a data-role="button" class="BYGsgt" onClick="Temprano(4)">SANGRIENTO</a>
+        </div>
+    </div>
+    </div>
+    <!-- PAGINA DE ESCOGER SIN EQUIPO -->
+    <div data-role="page" data-control-title="Sin Equipo" id="Solos">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page7" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="JugadoresSolo()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte02.png" style="max-width: 70%;">
+            <p style="left:calc(50% - 25px);top:53px;font-size:small;z-index:1000;position:fixed;">Equipos</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                ¿QUIENES JUGARAN
+                <br><b>POR EQUIPOS?</b>
+            </p>
+            <table id="dbSolo" data-role="table" data-mode="none">
+                <thead class="ui-body-b">
+                    <tr>
+                        <th>JUGADOR</th>
+                        <th>JUEGAN POR EQUIPO</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- PAGINA DE EQUIPOS POR RANDOM -->
+    <div data-role="page" data-control-title="Random" id="page8">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page7" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="pairIndCheck()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte02.png" style="max-width: 70%;">
+            <p style="left:calc(50% - 25px);top:53px;font-size:small;z-index:1000;position:fixed;">Equipos</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>EQUIPOS</b>
+            </p>
+            <div id="dbRandTeam"></div>
+            <br>
+        </div>
+    </div>
+    <!-- PAGINA DE EQUIPOS POR HANDICAP -->
+    <div data-role="page" data-control-title="Por Handicap" id="page9">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page7" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="pairIndCheck()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte02.png" style="max-width: 70%;">
+            <p style="left:calc(50% - 25px);top:53px;font-size:small;z-index:1000;position:fixed;">Equipos</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>EQUIPOS</b>
+            </p>
+            <div id="dbHandTeam"></div>
+        </div>
+    </div>
+    <!-- PAGINA DE EQUIPOS ARMADOS -->
+    <div data-role="page" data-control-title="Armados" id="eqArm">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page7" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="ArmadosPair()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+            </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte02.png" style="max-width: 70%;">
+            <p style="left:calc(50% - 25px);top:53px;font-size:small;z-index:1000;position:fixed;">Equipos</p>
+        </div>
+        <div class="header-gradient" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <br>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>EQUIPOS</b>
+            </p>
+            <div id="armCont" class="hidden radioFull">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="radio" name="radioTri" id="radioA" value="on" checked="checked" onClick="crearArmados(true)">
+                    <label for="radioA">Triparejas</label>
+                    <input type="radio" name="radioTri" id="radioB" value="off" onClick="crearArmados(false)">
+                    <label for="radioB">Parejas</label>
+                </fieldset>
+            </div>
+            <div id="dbArmTeam"></div>
+        </div>
+        <div class="transparent" data-role="footer" data-position="fixed" data-tap-toggle="false" style="text-align:center; padding-top:5px;padding-bottom:5px;">
+        </div>
+    </div>
+    <!-- PAGINA DE APUESTAS INDIVIDUALES -->
+    <div data-role="page" data-control-title="apuestasInd" id="indAps">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#popIndiAdd" data-rel="popup" id="indiAdd" style="display:none;" class="ui-btn-left BYGsimple" data-shadow="false" data-position-to="window">
+              Nuevo
+            </a>
+            <a data-role="button" id="apsNext" onClick="continuarBancoApuestas()" class="ui-btn-right bCont" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+            </h3>
+        </div>
+        <div style="text-align:center;top:36px;left: calc(50% - 64px);z-index:1000;position:fixed;">
+            <img src="res/setup_parte03.png" style="max-width: 70%;">
+            <p style="left:51%;top:53px;font-size:small;z-index:1000;position:fixed;color:black;text-shadow:none;">Apuestas</p>
+        </div>
+        <div class="transparent" style="width:100%; height:35px; z-index:999; top:48px; position:fixed;">
+        </div>
+        <div data-role="popup" id="popIndiAdd" data-theme="a" data-dismissible="false">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                <li data-role="list-divider">Escoge Apuesta a agregar</li>
+                <li data-theme="b" data-icon="false"><a data-rel="back">Cancelar</a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <p style="text-align: center;font-size:large;color:#203744;">
+                <b>APUESTAS POR JUGADOR</b>
+            </p>
+            <ul id="listAps" data-role="listview" data-inset="true" style="width:95%;margin:auto;"></ul>
+        </div>
+    </div>
+    <!-- PAGINA DE APUESTAS INDIVIDUALES Detalles -->
+    <div data-role="page" data-control-title="apuestasInd" id="indApsDet">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="false">
+            <a data-role="button" data-transition="slide" data-direction="reverse" href="#indAps" class="ui-btn-left bBack" data-shadow="false" onclick="$(window).off('orientationchange');"></a>
+            <h3 style="white-space: normal;">
+              APUESTAS DE <b>...</b>
+            </h3>
+        </div>
+        <div data-role="tabs" style="padding:0;margin-top:32px;" class="tabs">
+            <div data-role="navbar" id="apNavBar" style="position:fixed;top:64px;width:100%;z-index:3">
+                <ul>
+                    <li><a href="#dbStakeInd" id="apIndNav" class="ui-btn-active" data-theme="a" data-ajax="false">Individual</a></li>
+                    <li><a href="#dbStakePair" data-theme="a" data-ajax="false">Parejas</a></li>
+                </ul>
+            </div>
+            <div id=filterApsHolder>
+                <form>
+                    <input data-type="search" id="filterAps">
+                </form>
+            </div>
+            <div id="dbStakeInd" class="ui-content" data-filter="true" data-input="#filterAps"></div>
+            <div id="dbStakePair" class="ui-content" data-filter="true" data-input="#filterAps"></div>
+        </div>
+    </div>
+    <!-- PAGINA DE COMENZAR JUEGO -->
+    <div data-role="page" data-control-title="Comenzar" id="page10">
+        <div data-role="content">
+            <br>
+            <br>
+            <div style="text-align:center" data-controltype="image">
+                <img src="res/iconoajugar.png" style="max-width: 50%; max-height:215px;" data-controltype="image">
+            </div>
+            <p style="text-align: center;font-size:xx-large;">
+                <b>¡A JUGAR!</b>
+            </p>
+            <br>
+            <div class="center">
+                <a data-role="button" style="width:160px;background:#2AB573;color:white;font-size:small;" data-inline="true" onClick="tarjetaActivos(1)" href="#page11">
+              INICIAR DESDE HOYO 1
+          </a>
+                <a data-role="button" style="width:160px;background:#2AB573;color:white;font-size:small;" data-inline="true" onClick="tarjetaActivos(10)" href="#page11">
+              INICIAR DESDE HOYO 10
+          </a>
+            </div>
+        </div>
+    </div>
+    <!-- PAGINA DE TARJETAS -->
+    <div data-role="page" data-control-title="Tarjetas" id="page11">
+        <div data-theme="b" data-role="header">
+            <a data-role="button" id="backRev" onClick="backReview();" class="hidden ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="tarjetaReview();" class="ui-btn-right bCalc" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+            </h3>
+        </div>
+        <div id="tbHoyos" data-role="content" style="position:relative">
+            <table id="tarJug" data-role="table" data-mode="none"></table>
+        </div>
+    </div>
+    <!-- PAGINA DE RESULTADOS -->
+    <div data-role="page" data-control-title="Resultados" id="page16">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page11" class="ui-btn-left bEdit" data-shadow="false" onClick="deletePresion()"></a>
+            <a data-role="button" id="disNext" onClick="finDeJuego()" class="ui-state-disabled ui-btn-right bCont" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div data-controltype="textblock">
+            <p style="text-align: center;">
+                <b>
+          Resultados
+        </b>
+            </p>
+        </div>
+        <div id="tbFinal" data-role="content">
+            <table id="tarFinal" data-role="table" data-mode="none"></table>
+        </div>
+        <!-- <div class="floater"><a id="openPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-alt-icon ui-nodisc-icon">Home</a></div> -->
+    </div>
+    <!-- PAGINA DE PRESIONES -->
+    <div data-role="page" data-control-title="Presiones" id="presns">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page16" class="ui-btn-left bBack" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+        </div>
+        <div data-controltype="textblock">
+            <p style="text-align: center;font-size:x-large;">
+                <b>PRESIONES</b>
+            </p>
+        </div>
+        <div data-role="content" style="height:100%;">
+            <select id="presSelect"></select>
+            <div id="presList"></div>
+        </div>
+    </div>
+    <!-- PAGINA DE Cambiar Stake Parejas -->
+    <div data-role="page" data-control-title="CambioStakeParejas" id="chStkP">
+        <div data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page16" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="checkCambioStakePareja()" class="ui-btn-right bNext" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+            </h3>
+        </div>
+        <div data-role="content">
+            <div style="background:white;padding:10px;margin-top:25%;border:1px solid lightgray;">
+                <div style="position:relative;text-align: center;background:white;margin-bottom:10%;">
+                    <select id="chStk1">
+                        <option>Selecciona Pareja</option>
+                    </select>
+                    <div style="height:1px"></div>
+                    <div class="vsParejas">vs.</div>
+                    <select id="chStk2">
+                        <option>Selecciona Pareja</option>
+                    </select>
+                </div>
+                <div style="width:100%;margin-top:5px; position:relative; bottom:0px; padding:1px;background-color:#65C77F;">
+                    <p style="text-align:center;color:white;text-shadow: 1px 1px #000000;font-size:large;"><b>STAKE DE APUESTAS</b></p>
+                    <div style="background:white;margin:10px;">
+                        <table style="width: 100%">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b>Ronda 1</b>
+                                        <input data-role="spinbox" data-type="vertical" name="chStake" id="1" value="50" min="0" max="10000" step="5" data-mini="true" />
+                                    </td>
+                                    <td>
+                                        <b>Ronda 2</b>
+                                        <input data-role="spinbox" data-type="vertical" name="chStake" id="2" value="100" min="0" max="10000" step="5" data-mini="true" />
+                                    </td>
+                                    <td>
+                                        <b>Match</b>
+                                        <input data-role="spinbox" data-type="vertical" name="chStake" id="3" value="100" min="0" max="10000" step="5" data-mini="true" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="margin:auto;width:45%;">
+                <label>
+                    <input type="checkbox" id="ChStakePareja" name="ChStakePareja">Otro Cambio?
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- PAGINAS DE SALDO APUESTAS -->
+    <div data-role="page" data-control-title="SaldoApuestas" id="saldoApuestas">
+        <div data-theme="b" data-id="saldos" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page16" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="SalirJuego()" class="ui-btn-right bEnd" data-shadow="false"></a>
+            <h3>
+              <img src="res/logo_white.png" style="max-width: 100px;">
+            </h3>
+            <div data-role="navbar">
+                <ul>
+                    <!-- data-theme="a" -->
+                    <li><a href="#saldoApuestas2" data-transition="slide" data-direction="reverse">Individual</a></li>
+                    <li><a href="#saldoApuestas" class="ui-btn-active ui-state-persist">Total</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <!-- <a data-role="button" href="#logPanel" data-icon="bars" data-iconpos="notext">logPanel</a> -->
+            <div data-controltype="textblock">
+                <p style="text-align: center;font-size:large;">
+                    <b>SALDOS TOTALES</b>
+                </p>
+            </div>
+            <!-- <a data-role="button" onClick="saldoTotal()">
+              CheckSaldo
+          </a> -->
+            <div class="ui-grid-a center liner" style="background:white;border:1px solid grey;position:relative;">
+                <div class="ui-block-a">
+                    <p style="text-align: center;font-size:medium;">
+                        <b>GANA</b>
+                    </p>
+                    <div id="saldoGana"></div>
+                </div>
+                <div class="ui-block-b">
+                    <p style="text-align: center;font-size:medium;">
+                        <b>PIERDE</b>
+                    </p>
+                    <div id="saldoPierde"></div>
+                </div>
+            </div>
+        </div>
+        <div id="saldoTotales" style="background-color:#65C77F;" data-role="footer" data-position="fixed" data-tap-toggle="false">
+        </div>
+    </div>
+    <div data-role="page" data-control-title="SaldoApuestas2" id="saldoApuestas2">
+        <div data-theme="b" data-id="saldos" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" href="#page16" class="ui-btn-left bBack" data-shadow="false"></a>
+            <a data-role="button" onClick="SalirJuego()" class="ui-btn-right bEnd" data-shadow="false"></a>
+            <h3>
+             <img src="res/logo_white.png" style="max-width: 100px;">
+          </h3>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#saldoApuestas2" class="ui-btn-active ui-state-persist">Individual</a></li>
+                    <li><a href="#saldoApuestas" data-transition="slide">Total</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <!-- <a data-role="button" href="#logPanel" data-icon="bars" data-iconpos="notext">logPanel</a> -->
+            <p style="text-align: center;font-size:large;">
+                <b>SALDOS POR PERSONA</b>
+            </p>
+            <div style="text-align: center;">
+                <select id="selectIndividual" data-inline="true">
+                    <option>Selecciona Persona</option>
+                </select>
+            </div>
+            <!-- <a data-role="button" onClick="saldoTotal()">
+              CheckSaldo
+          </a> -->
+            <div id="saldoIndividual"></div>
+        </div>
+    </div>
+    <div class="ui-disabler"></div>
+    <div class="mainLoader hidden"></div>
+    <!-- PANEL DE LOGS -->
+    <div id="logPanelD">
+        <div id="logPanelTitle">
+            MENU
+        </div>
+        <div id="floating" class="floater hidden ui-widget-content"><a id="openPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-alt-icon ui-nodisc-icon">Home</a></div>
+        <div id="logPanel">
+            <div id="loggedUserInfo" class="hidden" style="width:85%; margin:auto; padding-bottom: 5px;">
+                <p style="color:white; font-weight:bold">Usuario: <span style="word-wrap:break-word;"></span></p>
+                <a data-role="button" class="BYGbutton" style="border:none" onClick="betyaLogout();">Log Out</a>
+            </div>
+            <ul id="logList" data-role="listview" data-inset="true" data-icon="false">
+                <li><a>Tarjeta</a></li>
+                <li><a>Presiones</a></li>
+                <li><a>Apuestas</a></li>
+                <li><a>Saldos</a></li>
+                <li><a>Handicaps</a></li>
+            </ul>
+        </div>
+        <div id="eBot">
+            <!-- <a data-role="button" id="eApp" class="BYGbutton" onClick="exportData();">Exportar/Importar</a> -->
+            <a data-role="button" id="globalAps" class="BYGbutton panelButton" onClick="bancoApuesta()">APUESTAS<br>INDIVIDUALES</a>
+            <a data-role="button" id="eApp" class="BYGbutton panelButton" onClick="restartApp();">
+              REINICIAR
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
